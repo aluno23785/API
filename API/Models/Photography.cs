@@ -30,12 +30,12 @@ namespace API.Models
         /// <summary>
         /// nome do ficheiro
         /// </summary>
-        public string File { get; set; }= ""//string.Empty;
+        public string File { get; set; }= string.Empty;
         /// <summary>
         /// Data em que a fotografia foi tirada
         /// </summary>
    
-        [DataType(DataType.Date)]
+       // [DataType(DataType.Date)]
        // [Display(Name = "Data")]
         //[Required(ErrorMessage = "{0} é de preenchimento Obrigatório")]
         public DateTime Date { get; set; }
@@ -64,7 +64,7 @@ namespace API.Models
         /// <summary>
         /// Uma Fotografia tem uma lista de compras 
         /// </summary>
-        public ICollection<Purchase> ListOfPurchases { get; set; } = []
+        public ICollection<Purchase> ListOfPurchases { get; set; } = [];
 
     }
 }
