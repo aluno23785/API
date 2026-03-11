@@ -35,9 +35,9 @@ namespace API.Models
         /// Data em que a fotografia foi tirada
         /// </summary>
    
-       // [DataType(DataType.Date)]
-       // [Display(Name = "Data")]
-        //[Required(ErrorMessage = "{0} é de preenchimento Obrigatório")]
+        [DataType(DataType.Date)]
+        [Display(Name = "Data")]
+        [Required(ErrorMessage = "{0} é de preenchimento Obrigatório")]
         public DateTime Date { get; set; }
         /// <summary>
         /// Preço da foto
