@@ -35,6 +35,7 @@ namespace API.Models
         /// Cliente que efetuou a compra
         /// </summary>
         public MyUser Buyer { get; set; }
+        /********************************/ 
 
         /*********************************
         *Relacionamentos M-N
