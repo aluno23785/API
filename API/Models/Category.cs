@@ -15,6 +15,9 @@ namespace API.Models
         /// <summary>
         /// Nome da Categoria
         /// </summary>
+        [StringLength(20)]
+        [Display(Name = "Nome da Categoria")]
+        [Required(ErrorMessage ="{0} é de preenchimento obrigatório")]
         public string Name { get; set; }
 
         /*********************************

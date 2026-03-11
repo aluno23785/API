@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API.Models
@@ -17,22 +18,31 @@ namespace API.Models
         /// <summary>
         /// nome associado a fotografia
         /// </summary>
-        public string Title { get; set; }
+        [StringLength(50)]
+        [Display(Name ="Tìtulo")]
+        [Required(ErrorMessage ="{0}   é de preenchimento Obrigatório")]
+        public string Title { get; set; } = string.Empty;
         /// <summary>
         /// descrição da fotografia (opcional)
         /// </summary>
-        public string Description { get; set; }
+        [StringLength(300)]
+        public string? Description { get; set; }
         /// <summary>
         /// nome do ficheiro
         /// </summary>
-        public string File { get; set; }
+        public string File { get; set; }= ""//string.Empty;
         /// <summary>
         /// Data em que a fotografia foi tirada
         /// </summary>
+   
+        [DataType(DataType.Date)]
+       // [Display(Name = "Data")]
+        //[Required(ErrorMessage = "{0} é de preenchimento Obrigatório")]
         public DateTime Date { get; set; }
         /// <summary>
         /// Preço da foto
         /// </summary>
+        [Display(Name ="Preço")]
         public decimal Price { get; set; }
 
         /*********************************
@@ -41,9 +51,12 @@ namespace API.Models
         /// <summary>
         /// Foreign Key para a Categoria de fotografia
         /// </summary>
+        [Display(Name = "Categoria")]
         [ForeignKey(nameof(Category))]
         public int CategoryFK { get; set; }
-        public Category Category { get; set; }
+        [Display(Name = "Categoria")]
+        [ValidateNever]
+        public Category Category { get; set; } = null!;
 
         /*********************************
         *Relacionamentos N-M
@@ -51,7 +64,7 @@ namespace API.Models
         /// <summary>
         /// Uma Fotografia tem uma lista de compras 
         /// </summary>
-        public ICollection<Purchase> ListOfPurchases { get; set; }
+        public ICollection<Purchase> ListOfPurchases { get; set; } = []
 
     }
 }
